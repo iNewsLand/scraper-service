@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: scraper-service
+    ports:
+      - "80:80"
+    volumes:
+      - ../app:/go/src/app/
+    environment:
+      - ENVIRONMENT=local
+    command: go run /go/src/app/main.go
