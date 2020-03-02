@@ -9,4 +9,6 @@ remove:
 	docker-compose -f docker/docker-compose.yml down --rmi all
 proto:
 	docker run -it --rm -v $(PWD)/app/protos:/protos docker_scraper_service sh \
-	-c "cd /protos && protoc /protos/test.proto --go_out=plugins=grpc:. --proto_path=/protos"
+	-c "cd /protos && protoc /protos/${PROTO}.proto --go_out=plugins=grpc:. --proto_path=/protos" && \
+	mkdir $(PWD)/app/modules/${PROTO} || \
+	mv $(PWD)/app/protos/${PROTO}.pb.go $(PWD)/app/modules/${PROTO}/${PROTO}.pb.go
