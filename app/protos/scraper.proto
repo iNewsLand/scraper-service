@@ -1,9 +1,18 @@
 syntax = "proto3";
 
-package spider;
-option go_package="spider";
+package scraper;
+option go_package="scraper";
 
-service SpiderService{}
+service SpiderService {
+    rpc GetProjects(getProjectsRequest) returns (getProjectsResponse) {};
+    rpc GetSpiders(getSpidersRequest) returns (getSpidersResponse) {};
+    rpc RunSpiders(runSpiderRequest) returns (runSpiderResponse) {};
+    rpc ScheduleSpider(scheduleSpiderRequest) returns (scheduleSpiderResponse) {};
+    rpc CancelScheduleSpiders(cancelScheduleSpiderRequest) returns (cancelScheduleSpiderResponse) {};
+    rpc GetJobs(getJobsRequest) returns (getJobsResponse) {};
+    rpc GetJob(getJobRequest) returns (getJobResponse) {};
+    rpc CancelJob(cancelJobRequest) returns (cancelJobResponse) {};
+}
 
 //Get projects
 message getProjectsRequest {}
@@ -33,7 +42,7 @@ message cancelScheduleSpiderRequest {
     string name = 1;
     string time = 2;
 }
-message cancelScheduleResponse {
+message cancelScheduleSpiderResponse {
     string status = 1;
 }
 
@@ -65,7 +74,7 @@ message getJobsResponse {
 message getJobRequest {
     string id = 1;
 }
-message getJobJobResponse {
+message getJobResponse {
     string status = 1;
 }
 
@@ -77,4 +86,3 @@ message cancelJobRequest {
 message cancelJobResponse {
     string status = 1;
 }
-
