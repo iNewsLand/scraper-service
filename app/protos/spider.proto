@@ -1,6 +1,0 @@
-syntax = "proto3";
-
-package spider;
-option go_package="spider";
-
-service SpiderService{}

@@ -10,5 +10,5 @@ remove:
 proto:
 	docker run -it --rm -v $(PWD)/app/protos:/protos docker_scraper_service sh \
 	-c "cd /protos && protoc /protos/${PROTO}.proto --go_out=plugins=grpc:. --proto_path=/protos" && \
-	mkdir $(PWD)/app/modules/${PROTO} || \
+	mkdir -p $(PWD)/app/modules/${PROTO} && \
 	mv $(PWD)/app/protos/${PROTO}.pb.go $(PWD)/app/modules/${PROTO}/${PROTO}.pb.go
