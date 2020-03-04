@@ -12,4 +12,5 @@ services:
       - ../app:/go/src/app/
     environment:
       - ENVIRONMENT=local
+      - SCRAPYD_URL=http://159.89.224.233:6800/
     command: go run /go/src/app/main.go

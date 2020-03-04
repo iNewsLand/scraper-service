@@ -10,7 +10,8 @@ import (
 var url = os.Getenv("SCRAPYD_URL")
 
 func getProjects() ([]string, error) {
-	req, err := http.Get(url)
+	prefix := "listprojects.json"
+	req, err := http.Get(url + prefix)
 	if err != nil {
 		return nil, err
 	}

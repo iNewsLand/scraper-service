@@ -17,7 +17,7 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 	server := grpc.NewServer()
-	modules.RegisterSpiderServiceServer(server, modules.Scraper{})
+	scraper.RegisterSpiderServiceServer(server, &scraper.Scraper{})
 
 	if err := server.Serve(listener); err != nil {
 		log.Fatalf("Server fail %v", err)
