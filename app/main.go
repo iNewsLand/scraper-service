@@ -1,15 +1,13 @@
 package main
 
 import (
-	"app/modules/spider"
+	"app/modules/scraper"
 	"fmt"
 	"log"
 	"net"
 
 	"google.golang.org/grpc"
 )
-
-type serverConfig struct{}
 
 func main() {
 	fmt.Println("Hello world")
@@ -19,7 +17,7 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 	server := grpc.NewServer()
-	spider.RegisterSpiderServiceServer(server, &serverConfig{})
+	modules.RegisterSpiderServiceServer(server, modules.Scraper{})
 
 	if err := server.Serve(listener); err != nil {
 		log.Fatalf("Server fail %v", err)
