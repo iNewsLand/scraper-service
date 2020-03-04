@@ -2,7 +2,6 @@ package main
 
 import (
 	"app/modules/scraper"
-	"fmt"
 	"log"
 	"net"
 
@@ -10,7 +9,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello world")
 
 	listener, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
@@ -19,6 +17,7 @@ func main() {
 	server := grpc.NewServer()
 	scraper.RegisterSpiderServiceServer(server, &scraper.Scraper{})
 
+	log.Printf("Service Running on: 0.0.0.0:50051")
 	if err := server.Serve(listener); err != nil {
 		log.Fatalf("Server fail %v", err)
 	}
