@@ -4,8 +4,6 @@ import (
 	"context"
 )
 
-const URL = "https://localhost:9300"
-
 type Scraper struct {}
 
 func (s *Scraper) GetProjects(ctx context.Context, req *GetProjectsRequest) (*GetProjectsResponse, error) {

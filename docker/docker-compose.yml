@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: scraper-service
     ports:
-      - "80:80"
+      - "50051:50051"
     volumes:
       - ../app:/go/src/app/
     environment:
